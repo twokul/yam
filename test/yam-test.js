@@ -1,7 +1,7 @@
 'use strict';
 
 var assert = require('chai').assert,
-    Yam    = require('../lib/yam'),
+    Yam    = require('../lib/yam').Yam,
     fs     = require('fs'),
     yam;
 
