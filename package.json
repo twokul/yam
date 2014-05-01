@@ -1,5 +1,5 @@
 {
-  "name": "kale",
+  "name": "yam",
   "description": "Dead simple storage interface",
   "version": "0.0.0",
   "keywords": [
@@ -11,11 +11,11 @@
     "email": "alex.navasardyan@gmail.com",
     "url": "http://twokul.io"
   },
-  "main": "lib/kale.js",
+  "main": "lib/yam.js",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/twokul/kale"
+    "url": "https://github.com/twokul/yam"
   },
   "dependencies": {
     "lodash": "2.4.1"
