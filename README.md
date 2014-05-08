@@ -8,12 +8,15 @@ Dead simple lazy storage interface
 #### Yam Constructor
 
 ```javascript
-var yam = new Yam('test', '.test-settings');
+var yam = new Yam('test');
 ```
 
 ```javascript
-var yam = new Yam('test', '.test-settings', {
-  foo: 'bar'
+var yam = new Yam('test', {
+  force: true,
+  options: {
+    foo: 'bar'
+  }
 });
 ```
 
@@ -43,14 +46,14 @@ yam.get('foo'); // => null
 yam.clear();
 ```
 
-#### LazyYam Constructor
+#### Lazy Yam Constructor
 
 ```javascript
-var lazyYam = new LazyYam('test', '.test-settings');
+var lazyYam = new Yam('test');
 ```
 
 ```javascript
-var lazyYam = new LazyYam('test', '.test-settings', {
+var lazyYam = new Yam('test', {
   foo: 'bar'
 });
 ```
