@@ -20,7 +20,26 @@ describe('Yam', function() {
       assert.ok(!fs.existsSync(path));
     });
 
-    describe('with force option', function() {
+    describe('no `force` option', function() {
+      it('creates cache', function() {
+        yam = new Yam('test');
+        assert.ok(!fs.existsSync(path));
+        assert.ok(yam._cache);
+      });
+
+      it('should set the values in the cache', function() {
+        fs.openSync(path, 'w');
+        yam = new Yam('test', {
+          options: {
+            foo: 'bar'
+          }
+        });
+        assert.equal(yam.path, path);
+        assert.equal(yam.get('foo'), 'bar');
+      });
+    });
+
+    describe('with `force` option', function() {
       it('should create a config file if it doesn\'t exist', function() {
         yam = new Yam('test', {
           force: true
@@ -31,9 +50,10 @@ describe('Yam', function() {
       it('should use an existing config file if it exist', function() {
         fs.openSync(path, 'w');
         yam = new Yam('test', {
-          force: true
-        }, {
-          foo: 'bar'
+          force: true,
+          options: {
+            foo: 'bar'
+          }
         });
         assert.equal(yam.path, path);
         assert.equal(yam.get('foo'), 'bar');
@@ -54,8 +74,11 @@ describe('Yam', function() {
 
       it('should create a config file and populate it with `options`', function() {
         yam = new Yam('test', {
-          force: true
-        }, { foo: 'bar' });
+          force: true,
+          options: {
+            foo: 'bar'
+          }
+        });
 
         assert.ok(fs.existsSync(path));
         assert.equal(yam.get('foo'), 'bar');
