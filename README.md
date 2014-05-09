@@ -13,14 +13,14 @@ Yam is lazy by default. "Lazy" means that it never tries to persist settings unl
 var yam = new Yam('test');
 ```
 
+Code above creates an instance of `Yam`. You can call `get` and `set` on it and it will keep settings
+in the memory until you call `flush`.
+
 ```javascript
-var yam = new Yam('test', {
-  force: true,
-  options: {
-    foo: 'bar'
-  }
-});
+yam.flush();
 ```
+
+Upon `flush` call, it will persist all the settings to the file (`.test`). Name of the file: '.' + a provided name.
 
 #### Get
 
@@ -46,16 +46,4 @@ yam.get('foo'); // => null
 
 ```javascript
 yam.clear();
-```
-
-#### Lazy Yam Constructor
-
-```javascript
-var lazyYam = new Yam('test');
-```
-
-```javascript
-var lazyYam = new Yam('test', {
-  foo: 'bar'
-});
 ```
