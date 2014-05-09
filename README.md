@@ -3,7 +3,9 @@ yam
 
 [![Build Status](https://travis-ci.org/twokul/yam.svg)](https://travis-ci.org/twokul/yam)
 
-Dead simple lazy storage interface
+Dead simple lazy storage interface.
+
+Yam is lazy by default. "Lazy" means that it never tries to persist settings unless you ask it to.
 
 #### Yam Constructor
 
