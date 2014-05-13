@@ -1,10 +1,9 @@
 'use strict';
 
-var assert = require('chai').assert,
-    Yam    = require('../lib/yam'),
-    fs     = require('fs'),
+var assert         = require('chai').assert,
+    Yam            = require('../lib/yam'),
+    deleteIfExists = require('./helpers/file-utils').deleteIfExists,
     yam;
-
 
 describe('get()', function() {
   var path = '.test';
@@ -45,7 +44,7 @@ describe('get()', function() {
     });
 
     afterEach(function() {
-      fs.unlinkSync(path);
+      deleteIfExists(path);
     });
 
     it('should return the value of the specified key', function() {

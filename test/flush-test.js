@@ -1,8 +1,10 @@
 'use strict';
 
-var assert = require('chai').assert,
-    Yam    = require('../lib/yam'),
-    fs     = require('fs-extra'),
+var assert         = require('chai').assert,
+    Yam            = require('../lib/yam'),
+    deleteIfExists = require('./helpers/file-utils').deleteIfExists,
+    read           = require('./helpers/file-utils').read,
+    exists         = require('./helpers/file-utils').exists,
     yam;
 
 describe('flush()', function() {
@@ -17,21 +19,19 @@ describe('flush()', function() {
   });
 
   afterEach(function() {
-    if (fs.existsSync(path)) {
-      fs.unlinkSync(path);
-    }
+    deleteIfExists(path);
   });
 
   describe('should save options to the file system', function() {
     it('if storage file exists', function() {
       yam.flush();
-      assert.ok(fs.existsSync(path));
-      assert.deepEqual(fs.readJsonSync(path), {
+      assert.ok(exists(path));
+      assert.deepEqual(read(path), {
         foo: 'bar'
       });
       yam.set('bar', 'baz');
       yam.flush();
-      assert.deepEqual(fs.readJsonSync(path), {
+      assert.deepEqual(read(path), {
         foo: 'bar',
         bar: 'baz'
       });
@@ -39,8 +39,8 @@ describe('flush()', function() {
 
     it('if storage file doesn\'t exist', function() {
       yam.flush();
-      assert.ok(fs.existsSync(path));
-      assert.deepEqual(fs.readJsonSync(path), {
+      assert.ok(exists(path));
+      assert.deepEqual(read(path), {
         foo: 'bar'
       });
     });

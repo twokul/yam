@@ -1,8 +1,8 @@
 'use strict';
 
-var assert = require('chai').assert,
-    Yam    = require('../lib/yam'),
-    fs     = require('fs'),
+var assert         = require('chai').assert,
+    Yam            = require('../lib/yam'),
+    deleteIfExists = require('./helpers/file-utils').deleteIfExists,
     yam;
 
 describe('remove()', function() {
@@ -30,7 +30,7 @@ describe('remove()', function() {
 
   describe('with `force` option', function() {
     afterEach(function() {
-      fs.unlinkSync(path);
+      deleteIfExists(path);
     });
 
     it('shouldn\'t throw exception upon deletion of an non-existing key', function() {

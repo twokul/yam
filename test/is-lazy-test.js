@@ -1,8 +1,8 @@
 'use strict';
 
-var assert = require('chai').assert,
-    Yam    = require('../lib/yam'),
-    fs     = require('fs'),
+var assert         = require('chai').assert,
+    Yam            = require('../lib/yam'),
+    deleteIfExists = require('./helpers/file-utils').deleteIfExists,
     yam;
 
 describe('_isLazy()', function() {
@@ -20,6 +20,6 @@ describe('_isLazy()', function() {
     });
 
     assert.notOk(yam._isLazy());
-    fs.unlinkSync(path);
+    deleteIfExists(path);
   });
 });

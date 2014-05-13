@@ -1,8 +1,8 @@
 'use strict';
 
-var assert = require('chai').assert,
-    Yam    = require('../lib/yam'),
-    fs     = require('fs'),
+var assert         = require('chai').assert,
+    Yam            = require('../lib/yam'),
+    deleteIfExists = require('./helpers/file-utils').deleteIfExists,
     yam;
 
 describe('storageExists()', function() {
@@ -34,11 +34,11 @@ describe('storageExists()', function() {
 
     it('should return true if storage file exists', function() {
       assert.ok(yam.storageExists());
-      fs.unlinkSync(path);
+      deleteIfExists(path);
     });
 
     it('should return false if storage file doesn\'t exists', function() {
-      fs.unlinkSync(path);
+      deleteIfExists(path);
       assert.notOk(yam.storageExists());
     });
   });

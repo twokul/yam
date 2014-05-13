@@ -1,53 +1,63 @@
 'use strict';
 
-var assert = require('chai').assert,
-    Yam    = require('../lib/yam'),
-    fs     = require('fs'),
+var assert         = require('chai').assert,
+    Yam            = require('../lib/yam'),
+    deleteIfExists = require('./helpers/file-utils').deleteIfExists,
+    exists         = require('./helpers/file-utils').exists,
+    open           = require('./helpers/file-utils').open,
     yam;
 
 describe('Constructor', function() {
   var path = '.test';
 
   afterEach(function() {
-    if (fs.existsSync(path)) {
-      fs.unlinkSync(path);
-    }
+    deleteIfExists(path);
   });
 
   it('shouldn\'t create a config file by default', function() {
     yam = new Yam('test');
-    assert.ok(!fs.existsSync(path));
+    assert.ok(!exists(path));
   });
 
   describe('no `force` option', function() {
     it('creates cache', function() {
       yam = new Yam('test');
-      assert.ok(!fs.existsSync(path));
+      assert.ok(!exists(path));
       assert.ok(yam._cache);
     });
 
     it('should set the values in the cache', function() {
-      fs.openSync(path, 'w');
+      open(path);
+
       yam = new Yam('test', {
         options: {
           foo: 'bar'
         }
       });
+
       assert.equal(yam.path, path);
       assert.equal(yam.get('foo'), 'bar');
     });
   });
 
   describe('with `force` option', function() {
+    it('should create a config file with a custom name', function() {
+      yam = new Yam('foo-bar', {
+        force: true
+      });
+      assert.ok(exists('.foo-bar'));
+      deleteIfExists('.foo-bar');
+    });
+
     it('should create a config file if it doesn\'t exist', function() {
       yam = new Yam('test', {
         force: true
       });
-      assert.ok(fs.existsSync(path));
+      assert.ok(exists(path));
     });
 
     it('should use an existing config file if it exist', function() {
-      fs.openSync(path, 'w');
+      open(path);
       yam = new Yam('test', {
         force: true,
         options: {
@@ -68,7 +78,7 @@ describe('Constructor', function() {
       yam = new Yam('test', {
         force: true
       });
-      assert.ok(fs.existsSync(path));
+      assert.ok(exists(path));
     });
 
     it('should create a config file and populate it with `options`', function() {
@@ -79,7 +89,7 @@ describe('Constructor', function() {
         }
       });
 
-      assert.ok(fs.existsSync(path));
+      assert.ok(exists(path));
       assert.equal(yam.get('foo'), 'bar');
     });
   });

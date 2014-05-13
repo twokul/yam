@@ -1,8 +1,9 @@
 'use strict';
 
-var assert = require('chai').assert,
-    Yam    = require('../lib/yam'),
-    fs     = require('fs'),
+var assert         = require('chai').assert,
+    Yam            = require('../lib/yam'),
+    deleteIfExists = require('./helpers/file-utils').deleteIfExists,
+    read           = require('./helpers/file-utils').read,
     yam;
 
 describe('clear()', function() {
@@ -10,7 +11,7 @@ describe('clear()', function() {
 
   describe('with `force` option', function() {
     afterEach(function() {
-      fs.unlinkSync(path);
+      deleteIfExists(path);
     });
 
     it('should clear all the values upon `clear` call', function() {
@@ -25,7 +26,7 @@ describe('clear()', function() {
       yam.clear();
       assert.equal(yam.get('foo'), null);
 
-      assert.equal(fs.readFileSync(path), '{}');
+      assert.deepEqual(read(path), {});
     });
   });
 });

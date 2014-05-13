@@ -1,8 +1,8 @@
 'use strict';
 
-var assert = require('chai').assert,
-    Yam    = require('../lib/yam'),
-    fs     = require('fs'),
+var assert         = require('chai').assert,
+    Yam            = require('../lib/yam'),
+    deleteIfExists = require('./helpers/file-utils').deleteIfExists,
     yam;
 
 describe('set()', function() {
@@ -31,7 +31,7 @@ describe('set()', function() {
 
   describe('with `force` option', function() {
     afterEach(function() {
-      fs.unlinkSync(path);
+      deleteIfExists(path);
     });
 
     it('should create and set the value for an non-existing key', function() {
