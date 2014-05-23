@@ -17,12 +17,13 @@ describe('get()', function() {
       });
     });
 
-    it('should return the value of the specified key', function() {
-      yam = new Yam('test', {
-        options: {
-          foo: 'bar'
-        }
+    it('should return all options as a hash', function() {
+      assert.deepEqual(yam.getAll(), {
+        foo: 'bar'
       });
+    });
+
+    it('should return the value of the specified key', function() {
       assert.equal(yam.get('foo'), 'bar');
     });
 
