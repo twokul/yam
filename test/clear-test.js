@@ -2,8 +2,8 @@
 
 var assert         = require('chai').assert,
     Yam            = require('../lib/yam'),
-    deleteIfExists = require('./helpers/file-utils').deleteIfExists,
-    read           = require('./helpers/file-utils').read,
+    deleteIfExists = require('../lib/utils/config-file-utils').deleteIfExists,
+    read           = require('../lib/utils/config-file-utils').read,
     yam;
 
 describe('clear()', function() {

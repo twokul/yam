@@ -2,9 +2,9 @@
 
 var assert         = require('chai').assert,
     Yam            = require('../lib/yam'),
-    deleteIfExists = require('./helpers/file-utils').deleteIfExists,
-    read           = require('./helpers/file-utils').read,
-    exists         = require('./helpers/file-utils').exists,
+    deleteIfExists = require('../lib/utils/config-file-utils').deleteIfExists,
+    read           = require('../lib/utils/config-file-utils').read,
+    exists         = require('../lib/utils/config-file-utils').exists,
     yam;
 
 describe('flush()', function() {

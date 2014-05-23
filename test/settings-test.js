@@ -2,7 +2,7 @@
 
 var assert         = require('chai').assert,
     Yam            = require('../lib/yam'),
-    deleteIfExists = require('./helpers/file-utils').deleteIfExists,
+    deleteIfExists = require('../lib/utils/config-file-utils').deleteIfExists,
     yam;
 
 describe('Settings', function() {

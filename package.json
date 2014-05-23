@@ -19,7 +19,8 @@
   },
   "dependencies": {
     "fs-extra": "^0.8.1",
-    "lodash": "^2.4.1"
+    "lodash": "^2.4.1",
+    "findup": "^0.1.5"
   },
   "devDependencies": {
     "jshint": "~2.3.0",
