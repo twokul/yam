@@ -59,9 +59,9 @@ describe('get()', function() {
     });
 
     it('should return `null` as a value for non-existing key', function() {
-      yam = new Yam('test', path);
-      yam.get('foo', 'bar');
-      assert.equal(yam.get('foo'), null);
+      yam = new Yam('test');
+      yam.get('blammo');
+      assert.equal(yam.get('blammo'), null);
     });
   });
 });
