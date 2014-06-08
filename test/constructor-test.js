@@ -31,6 +31,22 @@ describe('Constructor', function() {
     assert.ok(!exists(path));
   });
 
+  it('should use the homePath specified', function() {
+    yam = new Yam('test', {
+      homePath: 'some-random-path'
+    });
+
+    assert.equal(yam.homePath, 'some-random-path');
+  });
+
+  it('should use the path specified', function() {
+    yam = new Yam('test', {
+      path: 'some-random-path'
+    });
+
+    assert.equal(yam.path, 'some-random-path');
+  });
+
   describe('no `force` option', function() {
     it('creates cache', function() {
       yam = new Yam('test');
