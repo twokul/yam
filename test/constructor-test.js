@@ -36,7 +36,7 @@ describe('Constructor', function() {
       homePath: 'some-random-path'
     });
 
-    assert.equal(yam.homePath, 'some-random-path');
+    assert.equal(yam.homePath, 'some-random-path/.test');
   });
 
   it('should use the path specified', function() {
@@ -44,7 +44,7 @@ describe('Constructor', function() {
       path: 'some-random-path'
     });
 
-    assert.equal(yam.path, 'some-random-path');
+    assert.equal(yam.path, 'some-random-path/.test');
   });
 
   describe('no `force` option', function() {
