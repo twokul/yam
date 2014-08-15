@@ -1,29 +1,34 @@
 'use strict';
 
-var assert = require('chai').assert,
-    Yam    = require('../lib/yam'),
-    yam;
+var assert = require('chai').assert;
+var Yam    = require('../lib/yam');
+var yam;
+
+var ok        = assert.ok;
+var deepEqual = assert.deepEqual;
 
 describe('Yam', function() {
   it('exists', function() {
-    assert.ok(Yam);
+    ok(Yam);
   });
 
-  it('public API methods exist', function() {
-    yam = new Yam('test');
+  describe('constructor', function() {
+    it('sets default options properly', function() {
+      yam = new Yam('test');
 
-    assert.ok(yam.get,           'get does not exist');
-    assert.ok(yam.set,           'set does not exist');
-    assert.ok(yam.clear,         'clear does not exist');
-    assert.ok(yam.remove,        'remove does not exist');
-    assert.ok(yam.storageExists, 'storage does not exist');
-    assert.ok(yam.flush,         'flush does not exist');
-  });
+      deepEqual(yam.options, {});
+    });
 
-  it('private API methods exist', function() {
-    yam = new Yam('test');
+    it('sets options properly', function() {
+      yam = new Yam('test', {
+        primary:   'test/fixtures/primary/',
+        secondary: 'test/fixtures/secondary/'
+      });
 
-    assert.ok(yam._isLazy);
-    assert.ok(yam._internalOptions);
+      deepEqual(yam.options, {
+        foo: 'bar',
+        baz: 5
+      });
+    });
   });
 });
