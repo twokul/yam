@@ -5,8 +5,6 @@ yam
 
 Dead simple lazy storage interface.
 
-Yam is lazy by default. "Lazy" means that it never tries to persist settings unless you ask it to.
-
 #### Yam Constructor
 
 ```javascript
