@@ -11,19 +11,20 @@ Yam is lazy by default. "Lazy" means that it never tries to persist settings unl
 
 ```javascript
 var yam = new Yam('test');
+
+var yam = new Yam('test', {
+  primary: 'path/to/primary/location',
+  secondary: 'path/to/secondary/location'
+});
 ```
-
-Code above creates an instance of `Yam`. You can call `get` and `set` on it and it will keep settings
-in the memory until you call `flush`.
-
-```javascript
-yam.flush();
-```
-
-Upon `flush` call, it will persist all the settings to the file (`.test`). Name of the file: '.' + a provided name.
 
 #### Get
 
 ```javascript
 yam.get('foo'); // => 'bar'
+```
+#### GetAll
+
+```javascript
+yam.getAll();
 ```
