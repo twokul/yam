@@ -27,23 +27,3 @@ Upon `flush` call, it will persist all the settings to the file (`.test`). Name 
 ```javascript
 yam.get('foo'); // => 'bar'
 ```
-
-#### Set
-
-```javascript
-yam.set('foo', 'baz');
-yam.get('foo'); // => 'baz'
-```
-
-#### Remove
-
-```javascript
-yam.remove('foo');
-yam.get('foo'); // => null
-```
-
-#### Clear
-
-```javascript
-yam.clear();
-```
