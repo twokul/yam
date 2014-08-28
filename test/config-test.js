@@ -33,5 +33,25 @@ describe('Config', function() {
         'bazinga-blah-blah': 'hello'
       });
     });
+
+    it('strips single line comments from JSON strings', function() {
+      var config = new Config('test/fixtures/single-line-comments.json');
+
+      deepEqual(config, {
+        foo: 'bar',
+        baz: 5,
+        'bazinga-blah-blah': 'hello'
+      });
+    });
+
+    it('strips multi-line comments from JSON strings', function() {
+      var config = new Config('test/fixtures/multi-line-comments.json');
+
+      deepEqual(config, {
+        foo: 'bar',
+        baz: 5,
+        'bazinga-blah-blah': 'hello'
+      });
+    });
   });
 });
