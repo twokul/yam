@@ -40,7 +40,8 @@ describe('Config', function() {
       deepEqual(config, {
         foo: 'bar',
         baz: 5,
-        'bazinga-blah-blah': 'hello'
+        'bazinga-blah-blah': 'hello',
+        url: 'http://bas.com'
       });
     });
 
@@ -50,7 +51,8 @@ describe('Config', function() {
       deepEqual(config, {
         foo: 'bar',
         baz: 5,
-        'bazinga-blah-blah': 'hello'
+        'bazinga-blah-blah': 'hello',
+        url: 'http://bal.com'
       });
     });
   });
