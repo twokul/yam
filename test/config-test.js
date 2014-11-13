@@ -55,5 +55,11 @@ describe('Config', function() {
         url: 'http://bal.com'
       });
     });
+
+    it('throws error when JSON is invalid', function() {
+      assert.throws(function() {
+        new Config('test/fixtures/invalid-config.json');
+      }, 'Error when parsing file in test/fixtures/invalid-config.json. Make sure that you have a valid JSON.');
+    });
   });
 });
