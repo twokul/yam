@@ -18,7 +18,7 @@
     "url": "https://github.com/twokul/yam"
   },
   "dependencies": {
-    "fs-extra": "^0.8.1",
+    "fs-extra": "^0.16.3",
     "lodash": "^2.4.1",
     "findup": "^0.1.5"
   },

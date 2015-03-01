@@ -25,7 +25,7 @@ describe('Yam', function() {
     });
 
     it('returns `undefined` if the value was not found', function() {
-      yam = new Yam('test', {
+      yam = new Yam('foobar', {
         primary:   'test/fixtures/primary/',
         secondary: 'test/fixtures/secondary/'
       });
@@ -36,7 +36,7 @@ describe('Yam', function() {
 
   describe('constructor', function() {
     it('sets default options properly', function() {
-      yam = new Yam('test');
+      yam = new Yam('foobar');
 
       deepEqual(yam.options, {});
     });
