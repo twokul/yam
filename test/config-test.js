@@ -7,6 +7,19 @@ var ok        = assert.ok;
 var deepEqual = assert.deepEqual;
 
 describe('Config', function() {
+  var called = false;
+  var originalOutputError = Config.prototype.outputError;
+
+  before(function() {
+    Config.prototype.outputError = function() {
+      called = true;
+    };
+  });
+
+  after(function() {
+    Config.prototype.outputError = originalOutputError;
+  });
+
   it('module exists', function() {
     ok(Config);
   });
@@ -24,7 +37,7 @@ describe('Config', function() {
       deepEqual(config, {});
     });
 
-    it('returns an empty object if a path exists and file has settings', function() {
+    it('returns an object if a path exists and file has settings', function() {
       var config = new Config('test/fixtures/config.json');
 
       deepEqual(config, {
@@ -54,6 +67,13 @@ describe('Config', function() {
         'bazinga-blah-blah': 'hello',
         url: 'http://bal.com'
       });
+    });
+
+    it('gracefully handles if path is a directory', function() {
+      var config = new Config('test/fixtures/dir');
+
+      deepEqual(config, {}, 'output is correct');
+      ok(called, 'outputError function was called');
     });
 
     it('throws error when JSON is invalid', function() {
