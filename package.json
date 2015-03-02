@@ -18,9 +18,9 @@
     "url": "https://github.com/twokul/yam"
   },
   "dependencies": {
+    "findup": "^0.1.5",
     "fs-extra": "^0.16.3",
-    "lodash": "^2.4.1",
-    "findup": "^0.1.5"
+    "lodash.merge": "^3.0.2"
   },
   "devDependencies": {
     "jshint": "~2.3.0",
