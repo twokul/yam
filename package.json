@@ -19,8 +19,8 @@
   },
   "dependencies": {
     "findup": "^0.1.5",
-    "fs-extra": "^0.26.6",
-    "lodash.merge": "^3.0.2"
+    "fs-extra": "^0.30.0",
+    "lodash.merge": "^4.4.0"
   },
   "devDependencies": {
     "jshint": "~2.3.0",
