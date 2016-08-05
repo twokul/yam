@@ -1,0 +1,11 @@
+*.swp
+.DS_Store
+.git
+.gitignore
+.jshintrc
+.npmignore
+.travis.yml
+node_modules/
+*.log
+test.js
+test/
