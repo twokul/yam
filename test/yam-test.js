@@ -1,5 +1,6 @@
 'use strict';
 
+var path   = require('path');
 var assert = require('chai').assert;
 var Yam    = require('../lib/yam');
 var yam;
@@ -18,6 +19,16 @@ describe('Yam', function() {
       yam = new Yam('test', {
         primary:   'test/fixtures/primary/',
         secondary: 'test/fixtures/secondary/'
+      });
+
+      equal(yam.get('foo'), 'bar');
+      equal(yam.get('baz'), 5);
+    });
+
+    it('supports Javascript files', function() {
+      yam = new Yam('js-test', {
+        primary:   path.join(process.cwd(), 'test/fixtures/primary/'),
+        secondary: path.join(process.cwd(), 'test/fixtures/secondary/')
       });
 
       equal(yam.get('foo'), 'bar');

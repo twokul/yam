@@ -1,5 +1,6 @@
 'use strict';
 
+var path = require('path');
 var assert = require('chai').assert;
 var Config = require('../lib/config');
 
@@ -65,6 +66,16 @@ describe('Config', function() {
         foo: 'bar',
         baz: 5,
         'bazinga-blah-blah': 'hello',
+        url: 'http://bal.com'
+      });
+    });
+
+    it('supports Javascript files', function() {
+      var config = new Config(path.join(process.cwd(), 'test/fixtures/config-as-js-module.js'));
+
+      deepEqual(config, {
+        foo: 'bar',
+        baz: 5,
         url: 'http://bal.com'
       });
     });
