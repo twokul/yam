@@ -43,6 +43,15 @@ describe('Yam', function() {
 
       equal(yam.get('durp'), undefined);
     });
+
+    it('returns `false` if the value is false', function() {
+      yam = new Yam('test', {
+        primary:   'test/fixtures/primary/',
+        secondary: 'test/fixtures/secondary/'
+      });
+
+      equal(yam.get('falsey'), false);
+    });
   });
 
   describe('constructor', function() {
@@ -60,7 +69,8 @@ describe('Yam', function() {
 
       deepEqual(yam.options, {
         foo: 'bar',
-        baz: 5
+        baz: 5,
+        falsey: false
       });
     });
   });
