@@ -1,7 +1,7 @@
 {
   "name": "yam",
   "description": "Dead simple storage interface",
-  "version": "0.0.23",
+  "version": "0.0.24",
   "keywords": [
     "storage",
     "config"
